@@ -230,8 +230,9 @@ frontend/   React geospatial War Room
 scripts/    Bounded data acquisition and verification utilities
 ```
 
-## Author
+## Authors
 
-**Kunal Chaudhary**
+- [**Kunal Chaudhary**](https://github.com/kiingkunal)
+- [**JATIN DHIMAN**](https://github.com/jatindhimangit) — Co-author and contributor
 
 Built for the ET AI Hackathon 2026.
