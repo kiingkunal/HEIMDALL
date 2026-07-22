@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "dataset": "2025-standoff",
+  "locked_at": "2026-07-22T16:02:02.489939+00:00",
+  "aggregate_sha256": "1016dc4bb50eda36ed3e5a91cc87f07e4f9a3768809602f817a86e80eedb633f",
+  "files": {
+    "config/risk_weights.yaml": "3f963534c1c065e15ad2742b24f8b58cd18068eca61bfa202a8905f97c3090d1",
+    "config/corridors.yaml": "c97932c0efbd21f90d6a230c8ba5395ddf670a2ebc906887a92ea91991f966c4",
+    "config/cascade_params.yaml": "3057f64bff1860f6de7abc574f51982fab12be72f80078c245342f08728fd9e7",
+    "config/mc_params.yaml": "573952baede3b5151c1b1f404a5e0f4f5680f6d5772cdddb753fbb3cdf6d965b",
+    "config/solver_presets.yaml": "ff37cb9a329d4eeca6e2adbffecbf01fd8e570a0944281a44272fef8a2c96ac3",
+    "config/replay_backtest.yaml": "665ccbf24236ce6ca78b3085ea656e54f7a9da060b18272157146f6c4f72f32f"
+  },
+  "note": "thresholds and engine assumptions locked before historical evaluation"
+}

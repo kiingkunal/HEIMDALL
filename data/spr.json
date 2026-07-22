@@ -1,0 +1,49 @@
+{
+  "_meta": {
+    "dataset": "India Strategic Petroleum Reserve (Phase I)",
+    "source": "ISPRL (Indian Strategic Petroleum Reserves Ltd) public facility figures; MoPNG / PPAC statements",
+    "as_of": "2025 (Phase I operational)",
+    "retrieved": "2026-07-21",
+    "notes": "Phase I total ~5.33 MMT ≈ 9.5 days of national crude cover. Phase II (Chandikhol, Padur expansion) under development, NOT counted here.",
+    "unit_note": "capacity_mmt = million metric tonnes crude. 1 MMT crude ≈ 7.33 million barrels (API-dependent)."
+  },
+  "barrels_per_mmt": 7.33,
+  "facilities": [
+    {
+      "id": "spr_vizag",
+      "name": "Visakhapatnam",
+      "state": "Andhra Pradesh",
+      "capacity_mmt": 1.33,
+      "coast": "east",
+      "lat": 17.6868,
+      "lon": 83.2185,
+      "max_drawdown_mmt_per_day": 0.05,
+      "drawdown_note": "DEMO ASSUMPTION: sustained safe drawdown rate; real rate governed by pump/jetty limits"
+    },
+    {
+      "id": "spr_mangaluru",
+      "name": "Mangaluru",
+      "state": "Karnataka",
+      "capacity_mmt": 1.5,
+      "coast": "west",
+      "lat": 12.9141,
+      "lon": 74.856,
+      "max_drawdown_mmt_per_day": 0.05,
+      "drawdown_note": "DEMO ASSUMPTION"
+    },
+    {
+      "id": "spr_padur",
+      "name": "Padur",
+      "state": "Karnataka",
+      "capacity_mmt": 2.5,
+      "coast": "west",
+      "lat": 13.42,
+      "lon": 74.73,
+      "max_drawdown_mmt_per_day": 0.08,
+      "drawdown_note": "DEMO ASSUMPTION"
+    }
+  ],
+  "total_capacity_mmt": 5.33,
+  "national_cover_days": 9.5,
+  "cover_days_source": "MoPNG/PPAC public statement; derived from 5.33 MMT vs ~4.7 mb/d imports"
+}

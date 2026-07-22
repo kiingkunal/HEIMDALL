@@ -1,0 +1,93 @@
+# OR-Tools response optimizer — objective weight presets. SAME model, three weight sets, three
+# plans. Objective is minimized and expressed in $M/day-equivalent terms so weights are comparable:
+#   landed_cost($M/d) = Σ price($/bbl) * volume(mb/d)          [mb/d * $/bbl = million-$/day]
+#   + w_shortage       * shortage(mb/d)      (slack — always heavily penalized, never a hard fail)
+#   + w_delay          * Σ delay_days * volume
+#   + w_concentration  * max_bucket_volume(mb/d)   (linear diversification proxy)
+#   + w_spr_depletion  * Σ spr_drawdown(mb/d)
+#   + w_route_risk     * Σ route_risk(0-1) * volume
+#
+# Weights are authored priors (NOT fitted), locked + commit-hashed before the Phase 5 backtest.
+
+# Shortage is the worst outcome for an energy-security controller, so every preset penalizes it
+# hard; presets differ in how they trade cost vs diversification / SPR preservation / route risk.
+presets:
+  cost_first:
+    label: Cost-First
+    w_cost: 1.0
+    w_shortage: 300.0        # still avoid shortage, but tolerate concentration/risk to save money
+    w_delay: 0.1
+    w_concentration: 0.0     # indifferent to supplier concentration
+    w_spr_depletion: 0.3     # willing to draw SPR if it is the cheapest cover
+    w_route_risk: 0.0        # indifferent to corridor risk
+
+  security_first:
+    label: Security-First
+    w_cost: 0.3              # cost is secondary
+    w_shortage: 800.0        # shortage essentially forbidden
+    w_delay: 1.5
+    w_concentration: 40.0    # diversify aggressively across supplier buckets
+    w_spr_depletion: 12.0    # preserve strategic reserve
+    w_route_risk: 25.0       # steer away from high-risk corridors
+
+  balanced:
+    label: Balanced
+    w_cost: 1.0
+    w_shortage: 500.0
+    w_delay: 0.6
+    w_concentration: 15.0
+    w_spr_depletion: 4.0
+    w_route_risk: 8.0
+
+# Pricing + freight assumptions (DEMO where noted).
+pricing:
+  default_brent_usd_bbl: 80.0     # fallback if no live EIA/replay Brent; overridden at call time
+  base_freight_usd_bbl: 1.5       # baseline sea freight (DEMO ASSUMPTION)
+  freight_usd_per_1000km: 0.9     # distance-scaled freight from searoute length (DEMO ASSUMPTION)
+  reroute_freight_multiplier: 1.6 # Cape-of-Good-Hope reroute freight uplift (mirrors cascade)
+
+# Inventory floors (fraction of capacity that must remain — never drawn below).
+floors:
+  spr_min_fraction: 0.10          # keep >=10% of SPR as last-resort reserve
+  commercial_min_days: 3.0        # keep >=3 days commercial cover
+
+solver:
+  arrival_window_days: 45         # cargoes must be deliverable within this window
+  time_limit_ms: 5000
+
+# User-adjustable scenario bounds. Defaults are sourced here so the API, solver, and UI describe
+# the same modeled future. All are demo controls, not observed facts.
+scenario_controls:
+  default_duration_days: 14
+  min_duration_days: 1
+  max_duration_days: 60
+  default_price_shock_usd_bbl: 0
+  min_price_shock_usd_bbl: -20
+  max_price_shock_usd_bbl: 80
+  default_demand_change_pct: 0
+  min_demand_change_pct: -15
+  max_demand_change_pct: 20
+  default_vessel_availability_pct: 100
+  min_vessel_availability_pct: 20
+  max_vessel_availability_pct: 100
+  default_port_congestion_pct: 0
+  min_port_congestion_pct: 0
+  max_port_congestion_pct: 80
+
+# Six daily resilience attacks use these explicit horizons. The price shock is a demo assumption
+# applied only to the named combined scenario.
+resilience_scenarios:
+  major_supplier_duration_days: 30
+  west_coast_port_duration_days: 14
+  combined_duration_days: 30
+  combined_price_shock_usd_bbl: 20
+
+resilience_scoring:
+  weights:
+    supply_coverage: 0.35
+    playbook_robustness: 0.25
+    supplier_diversity: 0.15
+    response_cost: 0.15
+    playbook_freshness: 0.10
+  cost_floor_usd_bbl: 85.0   # DEMO ASSUMPTION: full score at or below calm landed-cost band
+  cost_ceiling_usd_bbl: 140.0 # DEMO ASSUMPTION: zero score at or above severe-stress band

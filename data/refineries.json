@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "dataset": "Major Indian refineries / import terminals for the twin",
+    "source": "Operator public capacity figures (RIL, IOCL, BPCL, HPCL, NRL); PPAC refinery list. Capacities approximate.",
+    "as_of": "2024-25",
+    "retrieved": "2026-07-21",
+    "notes": "capacity_mb_d from published MMTPA (÷ ~50 for MMTPA->mb/d rough factor, refined per site). accepts_classes governs the grade-compatibility hard constraint. min_run_mb_d is a modeled minimum economic run (DEMO ASSUMPTION). coast drives which corridor disruptions bite first."
+  },
+  "refineries": [
+    { "id": "jamnagar",   "name": "Jamnagar (RIL)",        "operator": "Reliance",       "coast": "west", "lat": 22.34, "lon": 69.08, "capacity_mb_d": 1.24, "min_run_mb_d": 0.60, "accepts_classes": ["light_sweet","medium_sweet","medium_sour","light_sour"], "port_id": "sikka" },
+    { "id": "vadinar",    "name": "Vadinar (Nayara)",      "operator": "Nayara Energy",  "coast": "west", "lat": 22.28, "lon": 69.72, "capacity_mb_d": 0.40, "min_run_mb_d": 0.18, "accepts_classes": ["medium_sour","medium_sweet","light_sour"], "port_id": "vadinar" },
+    { "id": "mumbai",     "name": "Mumbai (BPCL/HPCL)",    "operator": "BPCL/HPCL",      "coast": "west", "lat": 19.00, "lon": 72.85, "capacity_mb_d": 0.48, "min_run_mb_d": 0.20, "accepts_classes": ["medium_sour","medium_sweet","light_sour"], "port_id": "mumbai_port" },
+    { "id": "kochi",      "name": "Kochi (BPCL)",          "operator": "BPCL",           "coast": "west", "lat": 9.97,  "lon": 76.28, "capacity_mb_d": 0.31, "min_run_mb_d": 0.14, "accepts_classes": ["medium_sour","medium_sweet","light_sweet"], "port_id": "kochi_port" },
+    { "id": "mangalore",  "name": "Mangalore (MRPL)",      "operator": "MRPL",           "coast": "west", "lat": 12.93, "lon": 74.80, "capacity_mb_d": 0.30, "min_run_mb_d": 0.13, "accepts_classes": ["medium_sour","light_sour"], "port_id": "new_mangalore" },
+    { "id": "paradip",    "name": "Paradip (IOCL)",        "operator": "IOCL",           "coast": "east", "lat": 20.27, "lon": 86.67, "capacity_mb_d": 0.30, "min_run_mb_d": 0.13, "accepts_classes": ["medium_sour","medium_sweet","light_sweet"], "port_id": "paradip_port" },
+    { "id": "chennai",    "name": "Chennai (CPCL)",        "operator": "CPCL",           "coast": "east", "lat": 13.08, "lon": 80.27, "capacity_mb_d": 0.21, "min_run_mb_d": 0.09, "accepts_classes": ["medium_sour","light_sour"], "port_id": "chennai_port" },
+    { "id": "visakh",     "name": "Visakhapatnam (HPCL)",  "operator": "HPCL",           "coast": "east", "lat": 17.69, "lon": 83.22, "capacity_mb_d": 0.30, "min_run_mb_d": 0.13, "accepts_classes": ["medium_sour","medium_sweet"], "port_id": "visakh_port" }
+  ]
+}

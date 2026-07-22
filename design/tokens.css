@@ -1,0 +1,102 @@
+/* ============================================================
+   HEIMDALL design tokens v1.0 — styling contract
+   Dark command-center / mission-control. This file is the single
+   source of truth for color, type, spacing, radius, elevation.
+   Import once at app root. Tailwind maps to these vars
+   (see design/tailwind.config.js). Spec: design/tokens.md
+   ============================================================ */
+
+:root {
+  /* ---- Surfaces (darkest → most elevated) ---- */
+  --hm-bg-0: #05080D;        /* page shell / map underlay */
+  --hm-bg-1: #0A101A;        /* rails, panels */
+  --hm-bg-2: #0E1622;        /* cards */
+  --hm-bg-3: #131D2C;        /* drawer, popovers, hover states */
+  --hm-bg-inset: #070B12;    /* meter tracks, wells, input fields */
+
+  /* ---- Lines ---- */
+  --hm-line-1: #1B2838;      /* default hairline border */
+  --hm-line-2: #2C405A;      /* active / focused / hovered border */
+
+  /* ---- Text ---- */
+  --hm-text-1: #E8EFF7;      /* primary — values, titles */
+  --hm-text-2: #8FA3BA;      /* secondary — body, descriptions */
+  --hm-text-3: #55697F;      /* muted — labels, annotations, units */
+
+  /* ---- Signal ---- */
+  --hm-accent: #4CC3E8;      /* interactive, selection, links, REPLAY */
+  --hm-accent-dim: rgba(76,195,232,.13);
+  --hm-alert: #FF2E63;       /* klaxon — critical alarms, cost-of-delay live counter, cert FAIL */
+  --hm-alert-dim: rgba(255,46,99,.12);
+
+  /* ---- Corridor risk states (Risk Index 0–39 / 40–69 / 70–100) ---- */
+  --hm-risk-low: #3FCF8E;
+  --hm-risk-low-dim: rgba(63,207,142,.12);
+  --hm-risk-elev: #FFB224;
+  --hm-risk-elev-dim: rgba(255,178,36,.12);
+  --hm-risk-high: #FF4E42;
+  --hm-risk-high-dim: rgba(255,78,66,.13);
+
+  /* ---- Data-state ---- */
+  --hm-stale: #5E7285;       /* STALE playbooks, DARK_GAP (possible gap, never proof) */
+  --hm-stale-dim: rgba(94,114,133,.14);
+  --hm-sim: #A88BF7;         /* SIM / synthetic augmentation flag — never mixed silently */
+  --hm-sim-dim: rgba(168,139,247,.13);
+
+  /* ---- Map layers ---- */
+  --hm-map-arc: rgba(76,195,232,.45);        /* supplier→India flow arcs */
+  --hm-map-route-alt: rgba(143,163,186,.35); /* alternative routes, dashed */
+  --hm-tanker-underway: #6E86A0;
+  --hm-tanker-loitering: var(--hm-risk-elev);
+  --hm-tanker-darkgap: var(--hm-stale);
+  --hm-tanker-clusterturn: var(--hm-alert);
+
+  /* ---- Typography ---- */
+  --hm-font-ui: 'IBM Plex Sans', system-ui, sans-serif;
+  --hm-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  --hm-fs-2xs: 10px;  --hm-lh-2xs: 14px;   /* badges, data-age, provenance */
+  --hm-fs-xs: 11px;   --hm-lh-xs: 16px;    /* section labels (mono caps tracked) */
+  --hm-fs-sm: 12px;   --hm-lh-sm: 18px;    /* dense body, table cells */
+  --hm-fs-base: 13px; --hm-lh-base: 20px;  /* default body */
+  --hm-fs-md: 15px;   --hm-lh-md: 22px;    /* card titles */
+  --hm-fs-lg: 18px;   --hm-lh-lg: 26px;    /* drawer titles */
+  --hm-fs-xl: 22px;   --hm-lh-xl: 28px;    /* section headers */
+  --hm-fs-2xl: 28px;  --hm-lh-2xl: 34px;   /* corridor index numerals */
+  --hm-fs-3xl: 40px;  --hm-lh-3xl: 44px;   /* secondary hero numerals */
+  --hm-fs-hero: 64px; --hm-lh-hero: 64px;  /* resilience score */
+  --hm-track-label: .09em;                 /* uppercase label tracking */
+  --hm-track-badge: .06em;
+
+  /* ---- Spacing (4px grid) ---- */
+  --hm-sp-05: 2px;
+  --hm-sp-1: 4px;
+  --hm-sp-2: 8px;
+  --hm-sp-3: 12px;
+  --hm-sp-4: 16px;
+  --hm-sp-5: 20px;
+  --hm-sp-6: 24px;
+  --hm-sp-8: 32px;
+  --hm-sp-10: 40px;
+
+  /* ---- Radius (keep it square — this is an ops room) ---- */
+  --hm-r-1: 2px;   /* badges, bars, chips */
+  --hm-r-2: 4px;   /* cards, buttons, inputs */
+  --hm-r-3: 6px;   /* drawer, modal */
+
+  /* ---- Elevation & glow ---- */
+  --hm-shadow-drawer: 0 0 0 1px var(--hm-line-1), -24px 0 64px rgba(0,0,0,.6);
+  --hm-glow-low: 0 0 12px rgba(63,207,142,.35);
+  --hm-glow-elev: 0 0 12px rgba(255,178,36,.35);
+  --hm-glow-high: 0 0 14px rgba(255,78,66,.45);
+  --hm-glow-alert: 0 0 16px rgba(255,46,99,.5);
+
+  /* ---- Layout constants ---- */
+  --hm-rail-right-w: 360px;
+  --hm-rail-bottom-h: 56px;
+  --hm-drawer-w: 440px;
+}
+
+/* Numerals are ALWAYS mono + tabular. Apply to any element rendering a number. */
+.hm-num { font-family: var(--hm-font-mono); font-variant-numeric: tabular-nums; }
+
+@keyframes hm-pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }

@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "dataset": "Modeled crude suppliers for the India Energy Supply Twin",
+    "source": "Grade/API/sulphur from public assay references (EIA, OPEC, producer NOC published assays); availability + price_premium are DEMO ASSUMPTIONS for the solver",
+    "as_of": "2025 representative",
+    "retrieved": "2026-07-21",
+    "notes": "api_gravity and sulphur_pct classify each supplier's flagship export grade for grade-compatibility constraints. base_price_usd_per_bbl is a Brent-relative landed placeholder, overridden by live/replay prices. available_mb_d is modeled spare/contract availability, DEMO ASSUMPTION."
+  },
+  "suppliers": [
+    { "id": "russia",       "country": "Russia",              "grade_id": "urals",       "api_gravity": 31.7, "sulphur_pct": 1.30, "corridor": "malacca",        "available_mb_d": 1.9, "base_price_usd_per_bbl": -3.0, "price_note": "discounted vs Brent (sanctions context)", "ofac_flag": false, "diversification_bucket": "russia" },
+    { "id": "iraq",         "country": "Iraq",                "grade_id": "basrah_medium","api_gravity": 30.0, "sulphur_pct": 2.60, "corridor": "hormuz",         "available_mb_d": 1.1, "base_price_usd_per_bbl": -1.5, "price_note": "OSP discount", "ofac_flag": false, "diversification_bucket": "gulf" },
+    { "id": "saudi_arabia", "country": "Saudi Arabia",        "grade_id": "arab_medium", "api_gravity": 30.2, "sulphur_pct": 2.50, "corridor": "hormuz",         "available_mb_d": 0.9, "base_price_usd_per_bbl": 1.0,  "price_note": "OSP premium to Asia", "ofac_flag": false, "diversification_bucket": "gulf" },
+    { "id": "uae",          "country": "United Arab Emirates","grade_id": "murban",      "api_gravity": 40.2, "sulphur_pct": 0.79, "corridor": "hormuz",         "available_mb_d": 0.6, "base_price_usd_per_bbl": 1.5,  "price_note": "light sweet premium", "ofac_flag": false, "diversification_bucket": "gulf" },
+    { "id": "usa",          "country": "United States",       "grade_id": "wti_midland", "api_gravity": 40.8, "sulphur_pct": 0.40, "corridor": "cape_good_hope", "available_mb_d": 0.7, "base_price_usd_per_bbl": 2.5,  "price_note": "long-haul freight loaded", "ofac_flag": false, "diversification_bucket": "atlantic" },
+    { "id": "kuwait",       "country": "Kuwait",              "grade_id": "kuwait_export","api_gravity": 31.0, "sulphur_pct": 2.55, "corridor": "hormuz",         "available_mb_d": 0.4, "base_price_usd_per_bbl": -0.5, "price_note": "OSP", "ofac_flag": false, "diversification_bucket": "gulf" },
+    { "id": "nigeria",      "country": "Nigeria",             "grade_id": "bonny_light", "api_gravity": 35.3, "sulphur_pct": 0.15, "corridor": "cape_good_hope", "available_mb_d": 0.35,"base_price_usd_per_bbl": 2.0,  "price_note": "light sweet premium", "ofac_flag": false, "diversification_bucket": "atlantic" },
+    { "id": "brazil",       "country": "Brazil",              "grade_id": "tupi",        "api_gravity": 29.0, "sulphur_pct": 0.35, "corridor": "cape_good_hope", "available_mb_d": 0.3, "base_price_usd_per_bbl": 1.0,  "price_note": "medium sweet", "ofac_flag": false, "diversification_bucket": "atlantic" },
+    { "id": "angola",       "country": "Angola",              "grade_id": "girassol",    "api_gravity": 31.4, "sulphur_pct": 0.33, "corridor": "cape_good_hope", "available_mb_d": 0.25,"base_price_usd_per_bbl": 1.2,  "price_note": "medium sweet", "ofac_flag": false, "diversification_bucket": "atlantic" }
+  ]
+}

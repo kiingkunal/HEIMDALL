@@ -1,0 +1,29 @@
+# secrets
+.env
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# node
+node_modules/
+dist/
+*.tsbuildinfo
+
+# data that grows (snapshots are runtime artifacts; replay dataset IS committed)
+data/snapshots/*.parquet
+!data/snapshots/ais_20260722T171022Z.parquet
+data/sanctions/*.csv
+data/sanctions/*.xml
+!data/sanctions/sdn.csv
+
+# os
+.DS_Store
+
+# local state db
+backend/state.db
+*.db-journal

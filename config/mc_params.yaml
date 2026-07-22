@@ -1,0 +1,29 @@
+# Monte Carlo layer. numpy, seeded, reproducible. Same deterministic cascade run N times with
+# sampled uncertainties. Outputs here ARE "probabilities" (frequency over sampled futures) —
+# the only place that word is licensed.
+#
+# Cost asymmetry (per doctrine): evaluating a FIXED plan under a sampled future = cheap cascade
+# call (afford hundreds). RE-SOLVING per future = expensive (do not). certify.py respects this.
+
+monte_carlo:
+  n_samples: 200            # default distribution size for fixed-plan evaluation
+  n_solver_variations: 40   # solver-relevant re-solves for the reporting headline (25-50 band)
+  seed: 20260721            # reproducibility. Change only with a recorded reason.
+
+# Sampled uncertainty distributions. All ranges are DEMO ASSUMPTIONS unless noted, chosen to be
+# defensible and clearly labeled. Distributions: uniform[a,b] or bernoulli(p) or normal(mu,sigma).
+distributions:
+  duration_multiplier:      { type: uniform,   a: 0.7,  b: 1.6 }   # actual disruption vs stated duration
+  freight_multiplier:       { type: uniform,   a: 1.0,  b: 2.2 }   # freight spike on reroute/stress
+  vessel_arrival_delay_days: { type: uniform,  a: 0.0,  b: 10.0 }  # extra days on inbound cargoes
+  secondary_port_closure:   { type: bernoulli, p: 0.15 }           # a second Indian port goes down
+  demand_growth_pct:        { type: normal,    mu: 0.0, sigma: 3.0 } # short-run demand swing, %
+  supplier_failure:         { type: bernoulli, p: 0.10 }           # a modeled supplier drops out
+  price_drift_usd:          { type: normal,    mu: 0.0, sigma: 8.0 } # Brent drift over window, $/bbl
+
+# A plan "passes" a sampled future if minimum inventory floor is maintained AND shortage slack
+# stays under the tolerance. Robustness pass rate = fraction of futures passed.
+pass_criteria:
+  max_shortage_mb_d: 0.10          # tolerated residual shortage before a future counts as failed
+  respect_min_inventory_floor: true
+  cost_at_risk_percentile: 95      # CVaR-style reporting percentile for cost-at-risk

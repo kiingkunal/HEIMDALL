@@ -1,0 +1,24 @@
+# Playbook lifecycle thresholds. A playbook carries a validity window + input snapshot.
+# When any trigger fires, the playbook goes STALE (visible + explained) and regenerates.
+# All thresholds live here so staleness is auditable, never magic.
+
+lifecycle:
+  default_validity_hours: 12         # a fresh playbook is valid this long absent any trigger
+  refresh_check_interval_min: 15     # scheduler cadence for evaluating triggers
+
+triggers:
+  price_move_usd_per_bbl: 4.0        # Brent moves >= this vs snapshot -> stale (EIA/live display)
+  risk_index_move_points: 12.0       # Corridor Risk Index shifts >= this many points -> stale
+  vessel_availability_change_pct: 20.0  # modeled supplier vessel availability shifts >= this -> stale
+  new_sanctions_event: true          # any new OFAC event touching modeled suppliers/vessels -> stale
+  corridor_state_change: true        # a corridor flips open<->restricted in config/live -> stale
+  time_expiry: true                  # validity window elapsed -> stale
+
+# Staleness copy shown in the UI shelf (grey card + reason). Keys map to trigger names.
+stale_reasons:
+  price_move_usd_per_bbl: "Brent moved beyond ${threshold}/bbl since this plan was computed"
+  risk_index_move_points: "Corridor Risk Index shifted {threshold}+ points since snapshot"
+  vessel_availability_change_pct: "Observed corridor tanker availability changed {threshold}%+ since snapshot"
+  new_sanctions_event: "New sanctions event affects a supplier or vessel in this plan"
+  corridor_state_change: "A corridor's open/restricted state changed"
+  time_expiry: "Validity window elapsed"

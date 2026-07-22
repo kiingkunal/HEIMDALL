@@ -1,0 +1,56 @@
+# Maritime corridors HEIMDALL monitors.
+# Bboxes are coarse planning envelopes for AIS local-filtering and risk attribution,
+# NOT navigational boundaries. Refine against a chart before demo.
+# Source: chokepoint geographies per EIA "World Oil Transit Chokepoints" (2017, refreshed 2023)
+#         + manual lon/lat envelopes. searoute return_passages=True detects: Hormuz, Suez,
+#         Malacca, Bab-el-Mandeb, Cape of Good Hope.
+
+corridors:
+  hormuz:
+    name: Strait of Hormuz
+    bbox: { lon_min: 55.0, lon_max: 57.5, lat_min: 25.5, lat_max: 27.2 }
+    # ~40-45% of India's crude imports transit here (PPAC / trade-press consensus, 2024-2025).
+    india_crude_share_pct: 42.0
+    strategic_weight: 1.0          # dominant corridor for India crude security
+    searoute_passage: Strait of Hormuz
+    # datadocked get-vessels-by-area center (radius_km <= 50). Set to the Fujairah outbound
+    # anchorage — the dense staging area for laden crude/product tankers exiting the Gulf via
+    # Hormuz toward the Indian Ocean (verified 2026-07-21: ~47 tankers in a 50km circle). The
+    # narrow strait itself (26.57N, 56.25E) has sparse instantaneous traffic.
+    ais_center: { lat: 25.15, lon: 56.37, radius_km: 50 }
+
+  bab_el_mandeb:
+    name: Bab-el-Mandeb
+    bbox: { lon_min: 42.0, lon_max: 44.5, lat_min: 11.5, lat_max: 14.0 }
+    india_crude_share_pct: 8.0     # Red Sea / Suez routed barrels (demo assumption, PPAC-informed)
+    strategic_weight: 0.6
+    searoute_passage: Bab-el-Mandeb Strait
+    # Djibouti approach produced the most useful repeatable tanker observation circle in the
+    # bounded 2026-07-22 demo sweep.
+    ais_center: { lat: 11.6, lon: 43.15, radius_km: 50 }
+
+  suez:
+    name: Suez Canal
+    bbox: { lon_min: 32.0, lon_max: 34.5, lat_min: 29.5, lat_max: 32.0 }
+    india_crude_share_pct: 6.0
+    strategic_weight: 0.5
+    searoute_passage: Suez Canal
+    # South anchorage is used instead of the canal midpoint for repeatable traffic observations.
+    ais_center: { lat: 29.92, lon: 32.55, radius_km: 50 }
+
+  malacca:
+    name: Strait of Malacca
+    bbox: { lon_min: 98.0, lon_max: 104.0, lat_min: 1.0, lat_max: 6.0 }
+    # Eastbound / Russian-Pacific and SE-Asia sourced barrels (demo assumption).
+    india_crude_share_pct: 10.0
+    strategic_weight: 0.5
+    searoute_passage: Malacca Strait
+    ais_center: { lat: 2.5, lon: 101.3, radius_km: 50 }
+
+  cape_good_hope:
+    name: Cape of Good Hope (reroute reference)
+    bbox: { lon_min: 15.0, lon_max: 25.0, lat_min: -37.0, lat_max: -33.0 }
+    india_crude_share_pct: 0.0     # reference geometry only — the reroute path, not a monitored risk source
+    strategic_weight: 0.0
+    searoute_passage: Cape of Good Hope
+    reroute_reference: true

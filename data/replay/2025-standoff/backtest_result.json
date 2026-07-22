@@ -1,0 +1,831 @@
+{
+  "schema_version": 1,
+  "dataset": "2025-standoff",
+  "run_at": "2026-07-22T16:02:04.585236+00:00",
+  "case_study_scope": "single sourced historical event window; not statistical validation",
+  "config_lock_sha256": "1016dc4bb50eda36ed3e5a91cc87f07e4f9a3768809602f817a86e80eedb633f",
+  "dataset_fingerprints": {
+    "window": [
+      "2025-05-01T00:00:00+00:00",
+      "2025-06-30T00:00:00+00:00"
+    ],
+    "evidence_records": 12,
+    "brent_records": 41,
+    "evidence_sha256": "e68cfaa0aba9b2e5798ae0d501b81654437d3ffe43124b2d599fc8c39387700a",
+    "brent_sha256": "6a3b298e226f1430ba083f33317145d407f40939de8e3ee78710d0fa47374bde",
+    "source_urls_preserved": true
+  },
+  "alert": {
+    "event_id": "ev-2025-0612-iaea",
+    "headline": "IAEA Board adopts Iran safeguards non-compliance resolution",
+    "source": "IAEA Board of Governors GOV/2025/38",
+    "source_url": "https://www.iaea.org/sites/default/files/25/06/gov2025-38.pdf",
+    "risk_index": 44.45,
+    "confidence": 0.6517,
+    "threshold": {
+      "risk_index_threshold": 35.0,
+      "confidence_min": 0.45
+    }
+  },
+  "reactive_baseline": {
+    "baseline_end_date": "2025-06-11",
+    "baseline_statistic": "median",
+    "baseline_brent_usd_bbl": 65.565,
+    "trigger_brent_usd_bbl": 75.565,
+    "first_crossing_period": "2025-06-13",
+    "first_crossing_brent_usd_bbl": 76.0
+  },
+  "metrics": {
+    "detection_lead": {
+      "calendar_days_point": 1,
+      "calendar_days_range": [
+        0,
+        2
+      ],
+      "alert_normalized_at": "2025-06-12T12:00:00+00:00",
+      "reactive_eia_period": "2025-06-13",
+      "precision_note": "alert source is day-precision and Brent is a daily print; exact intraday lead is not claimed"
+    },
+    "alert_brent_usd_bbl": 70.84,
+    "reactive_brent_usd_bbl": 76.0,
+    "price_delta_usd_bbl": 5.16,
+    "modeled_purchase_volume_mb_d": 3.186,
+    "premium_commitment_days": 14.0,
+    "counterfactual_premium_avoided_musd": 230.157,
+    "shortage_days_avoided": 0.0,
+    "signal_to_certified_plan_seconds": 1.172,
+    "recommended_plan": "cost_first",
+    "recommended_robustness_pass_rate": 1.0,
+    "recommended_cost_at_risk_usd_bbl": 169.629,
+    "plan_status": "OPTIMAL",
+    "hard_constraint_violations": 0
+  },
+  "scenario": {
+    "corridor_states": {
+      "hormuz": "restricted"
+    },
+    "restrict_severity": 0.5,
+    "live_risk": {
+      "hormuz": 44.45
+    },
+    "unavailable_suppliers": [],
+    "disabled_refineries": [],
+    "duration_days": 14.0,
+    "price_shock_usd_bbl": 0.0,
+    "demand_change_pct": 0.0,
+    "vessel_availability_pct": 100.0,
+    "port_congestion_pct": 0.0,
+    "reference_brent_usd_bbl": 70.84
+  },
+  "plans": {
+    "cost_first": {
+      "preset": "cost_first",
+      "label": "Cost-First",
+      "status": "OPTIMAL",
+      "objective": 252.1873,
+      "landed_cost_musd_day": 249.6599,
+      "avg_landed_usd_bbl": 78.362,
+      "total_shortage_mb_d": 0.0,
+      "purchases": [
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "jamnagar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.945,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "mumbai",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.361,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "saudi_arabia",
+          "country": "Saudi Arabia",
+          "refinery_id": "kochi",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.279,
+          "price_usd_bbl": 75.267,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.01,
+          "arrival_day": 2.01
+        },
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "paradip",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.27,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "visakh",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.27,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "vadinar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.201,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "chennai",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.189,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "saudi_arabia",
+          "country": "Saudi Arabia",
+          "refinery_id": "jamnagar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.171,
+          "price_usd_bbl": 75.267,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.01,
+          "arrival_day": 2.01
+        },
+        {
+          "supplier_id": "uae",
+          "country": "United Arab Emirates",
+          "refinery_id": "vadinar",
+          "grade_class": "light_sour",
+          "volume_mb_d": 0.159,
+          "price_usd_bbl": 75.529,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 1.76,
+          "arrival_day": 1.76
+        },
+        {
+          "supplier_id": "uae",
+          "country": "United Arab Emirates",
+          "refinery_id": "mangalore",
+          "grade_class": "light_sour",
+          "volume_mb_d": 0.141,
+          "price_usd_bbl": 75.529,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 1.76,
+          "arrival_day": 1.76
+        },
+        {
+          "supplier_id": "kuwait",
+          "country": "Kuwait",
+          "refinery_id": "mangalore",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.129,
+          "price_usd_bbl": 74.002,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "kuwait",
+          "country": "Kuwait",
+          "refinery_id": "mumbai",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.071,
+          "price_usd_bbl": 74.002,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        }
+      ],
+      "spr_drawdown": [],
+      "commercial_use_mb_d": 0.0,
+      "supplier_mix": {
+        "russia": 1.686,
+        "iraq": 0.55,
+        "saudi_arabia": 0.45,
+        "uae": 0.3,
+        "kuwait": 0.2
+      },
+      "bucket_mix": {
+        "russia": 1.686,
+        "gulf": 1.5
+      },
+      "excluded_suppliers": [],
+      "demand_mb_d": 3.186,
+      "served_mb_d": 3.186,
+      "solver": "OR-Tools GLOP",
+      "sources": [
+        "data/suppliers.json",
+        "data/refineries.json",
+        "data/spr.json",
+        "config/solver_presets.yaml",
+        "config/cascade_params.yaml",
+        "searoute (strategic planning estimates)"
+      ],
+      "planning_horizon_days": 14.0,
+      "scenario_inputs": {
+        "duration_days": 14.0,
+        "price_shock_usd_bbl": 0.0,
+        "demand_change_pct": 0.0,
+        "vessel_availability_pct": 100.0,
+        "port_congestion_pct": 0.0,
+        "reference_brent_usd_bbl": 70.84
+      }
+    },
+    "security_first": {
+      "preset": "security_first",
+      "label": "Security-First",
+      "status": "OPTIMAL",
+      "objective": 176.1063,
+      "landed_cost_musd_day": 216.7619,
+      "avg_landed_usd_bbl": 80.701,
+      "total_shortage_mb_d": 0.0,
+      "purchases": [
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "jamnagar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.609667,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "nigeria",
+          "country": "Nigeria",
+          "refinery_id": "jamnagar",
+          "grade_class": "light_sweet",
+          "volume_mb_d": 0.35,
+          "price_usd_bbl": 86.601,
+          "rerouted": false,
+          "route_corridors": [],
+          "transit_days": 12.77,
+          "arrival_day": 12.77
+        },
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "mumbai",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.285667,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "kochi",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.279,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "mangalore",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.27,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "brazil",
+          "country": "Brazil",
+          "refinery_id": "visakh",
+          "grade_class": "medium_sweet",
+          "volume_mb_d": 0.269,
+          "price_usd_bbl": 87.065,
+          "rerouted": false,
+          "route_corridors": [],
+          "transit_days": 14.3,
+          "arrival_day": 14.3
+        },
+        {
+          "supplier_id": "uae",
+          "country": "United Arab Emirates",
+          "refinery_id": "chennai",
+          "grade_class": "light_sour",
+          "volume_mb_d": 0.189,
+          "price_usd_bbl": 75.529,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 1.76,
+          "arrival_day": 1.76
+        },
+        {
+          "supplier_id": "angola",
+          "country": "Angola",
+          "refinery_id": "vadinar",
+          "grade_class": "medium_sweet",
+          "volume_mb_d": 0.13,
+          "price_usd_bbl": 84.783,
+          "rerouted": false,
+          "route_corridors": [],
+          "transit_days": 11.71,
+          "arrival_day": 11.71
+        },
+        {
+          "supplier_id": "angola",
+          "country": "Angola",
+          "refinery_id": "mumbai",
+          "grade_class": "medium_sweet",
+          "volume_mb_d": 0.12,
+          "price_usd_bbl": 84.783,
+          "rerouted": false,
+          "route_corridors": [],
+          "transit_days": 11.71,
+          "arrival_day": 11.71
+        },
+        {
+          "supplier_id": "uae",
+          "country": "United Arab Emirates",
+          "refinery_id": "jamnagar",
+          "grade_class": "light_sour",
+          "volume_mb_d": 0.111,
+          "price_usd_bbl": 75.529,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 1.76,
+          "arrival_day": 1.76
+        },
+        {
+          "supplier_id": "kuwait",
+          "country": "Kuwait",
+          "refinery_id": "jamnagar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.045333,
+          "price_usd_bbl": 74.002,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "brazil",
+          "country": "Brazil",
+          "refinery_id": "mumbai",
+          "grade_class": "medium_sweet",
+          "volume_mb_d": 0.026333,
+          "price_usd_bbl": 87.065,
+          "rerouted": false,
+          "route_corridors": [],
+          "transit_days": 14.3,
+          "arrival_day": 14.3
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "visakh",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.001,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        }
+      ],
+      "spr_drawdown": [],
+      "commercial_use_mb_d": 0.5,
+      "supplier_mix": {
+        "russia": 0.895334,
+        "iraq": 0.55,
+        "uae": 0.3,
+        "kuwait": 0.045333,
+        "nigeria": 0.35,
+        "brazil": 0.295333,
+        "angola": 0.25
+      },
+      "bucket_mix": {
+        "russia": 0.895334,
+        "gulf": 0.895333,
+        "atlantic": 0.895333
+      },
+      "excluded_suppliers": [],
+      "demand_mb_d": 3.186,
+      "served_mb_d": 3.186,
+      "solver": "OR-Tools GLOP",
+      "sources": [
+        "data/suppliers.json",
+        "data/refineries.json",
+        "data/spr.json",
+        "config/solver_presets.yaml",
+        "config/cascade_params.yaml",
+        "searoute (strategic planning estimates)"
+      ],
+      "planning_horizon_days": 14.0,
+      "scenario_inputs": {
+        "duration_days": 14.0,
+        "price_shock_usd_bbl": 0.0,
+        "demand_change_pct": 0.0,
+        "vessel_availability_pct": 100.0,
+        "port_congestion_pct": 0.0,
+        "reference_brent_usd_bbl": 70.84
+      }
+    },
+    "balanced": {
+      "preset": "balanced",
+      "label": "Balanced",
+      "status": "OPTIMAL",
+      "objective": 295.5429,
+      "landed_cost_musd_day": 213.9914,
+      "avg_landed_usd_bbl": 79.669,
+      "total_shortage_mb_d": 0.0,
+      "purchases": [
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "jamnagar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.447,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "nigeria",
+          "country": "Nigeria",
+          "refinery_id": "jamnagar",
+          "grade_class": "light_sweet",
+          "volume_mb_d": 0.35,
+          "price_usd_bbl": 86.601,
+          "rerouted": false,
+          "route_corridors": [],
+          "transit_days": 12.77,
+          "arrival_day": 12.77
+        },
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "vadinar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.326,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "kochi",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.279,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "russia",
+          "country": "Russia",
+          "refinery_id": "paradip",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.27,
+          "price_usd_bbl": 81.958,
+          "rerouted": false,
+          "route_corridors": [
+            "bab_el_mandeb",
+            "suez"
+          ],
+          "transit_days": 13.14,
+          "arrival_day": 13.14
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "visakh",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.27,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "angola",
+          "country": "Angola",
+          "refinery_id": "jamnagar",
+          "grade_class": "medium_sweet",
+          "volume_mb_d": 0.25,
+          "price_usd_bbl": 84.783,
+          "rerouted": false,
+          "route_corridors": [],
+          "transit_days": 11.71,
+          "arrival_day": 11.71
+        },
+        {
+          "supplier_id": "kuwait",
+          "country": "Kuwait",
+          "refinery_id": "mangalore",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.2,
+          "price_usd_bbl": 74.002,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        },
+        {
+          "supplier_id": "saudi_arabia",
+          "country": "Saudi Arabia",
+          "refinery_id": "chennai",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.189,
+          "price_usd_bbl": 75.267,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.01,
+          "arrival_day": 2.01
+        },
+        {
+          "supplier_id": "saudi_arabia",
+          "country": "Saudi Arabia",
+          "refinery_id": "mangalore",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.07,
+          "price_usd_bbl": 75.267,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.01,
+          "arrival_day": 2.01
+        },
+        {
+          "supplier_id": "saudi_arabia",
+          "country": "Saudi Arabia",
+          "refinery_id": "vadinar",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.034,
+          "price_usd_bbl": 75.267,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.01,
+          "arrival_day": 2.01
+        },
+        {
+          "supplier_id": "iraq",
+          "country": "Iraq",
+          "refinery_id": "mumbai",
+          "grade_class": "medium_sour",
+          "volume_mb_d": 0.001,
+          "price_usd_bbl": 72.999,
+          "rerouted": false,
+          "route_corridors": [
+            "hormuz"
+          ],
+          "transit_days": 2.25,
+          "arrival_day": 2.25
+        }
+      ],
+      "spr_drawdown": [],
+      "commercial_use_mb_d": 0.5,
+      "supplier_mix": {
+        "russia": 1.043,
+        "iraq": 0.55,
+        "saudi_arabia": 0.293,
+        "kuwait": 0.2,
+        "nigeria": 0.35,
+        "angola": 0.25
+      },
+      "bucket_mix": {
+        "russia": 1.043,
+        "gulf": 1.043,
+        "atlantic": 0.6
+      },
+      "excluded_suppliers": [],
+      "demand_mb_d": 3.186,
+      "served_mb_d": 3.186,
+      "solver": "OR-Tools GLOP",
+      "sources": [
+        "data/suppliers.json",
+        "data/refineries.json",
+        "data/spr.json",
+        "config/solver_presets.yaml",
+        "config/cascade_params.yaml",
+        "searoute (strategic planning estimates)"
+      ],
+      "planning_horizon_days": 14.0,
+      "scenario_inputs": {
+        "duration_days": 14.0,
+        "price_shock_usd_bbl": 0.0,
+        "demand_change_pct": 0.0,
+        "vessel_availability_pct": 100.0,
+        "port_congestion_pct": 0.0,
+        "reference_brent_usd_bbl": 70.84
+      }
+    }
+  },
+  "certificates": {
+    "cost_first": {
+      "preset": "cost_first",
+      "label": "Cost-First",
+      "n_samples": 80,
+      "seed": 20260721,
+      "robustness_pass_rate": 1.0,
+      "confidence_interval": [
+        1.0,
+        1.0
+      ],
+      "worst_case_shortfall_mb_d": 0.0,
+      "expected_shortfall_mb_d": 0.0,
+      "expected_landed_cost_usd_bbl": 129.499,
+      "cost_at_risk_usd_bbl": 169.629,
+      "max_delay_days": 9.75,
+      "failure_conditions": {
+        "supplier_failure": 0.0,
+        "secondary_port_closure": 0.0,
+        "demand_growth": 0.0,
+        "long_delay": 0.0,
+        "extended_duration": 0.0
+      },
+      "binding_constraints": [
+        "high single-supplier concentration (russia 53%)"
+      ],
+      "recommended": true,
+      "rejected_reason": null,
+      "note": "robustness = frequency of futures maintaining minimum inventory (Monte Carlo)"
+    },
+    "security_first": {
+      "preset": "security_first",
+      "label": "Security-First",
+      "n_samples": 80,
+      "seed": 20260721,
+      "robustness_pass_rate": 1.0,
+      "confidence_interval": [
+        1.0,
+        1.0
+      ],
+      "worst_case_shortfall_mb_d": 0.0,
+      "expected_shortfall_mb_d": 0.0,
+      "expected_landed_cost_usd_bbl": 133.251,
+      "cost_at_risk_usd_bbl": 174.51,
+      "max_delay_days": 9.75,
+      "failure_conditions": {
+        "supplier_failure": 0.0,
+        "secondary_port_closure": 0.0,
+        "demand_growth": 0.0,
+        "long_delay": 0.0,
+        "extended_duration": 0.0
+      },
+      "binding_constraints": [
+        "diversified supply; no single point of failure dominates"
+      ],
+      "recommended": false,
+      "rejected_reason": "similar robustness but higher cost-at-risk ($174.51 vs $169.629)",
+      "note": "robustness = frequency of futures maintaining minimum inventory (Monte Carlo)"
+    },
+    "balanced": {
+      "preset": "balanced",
+      "label": "Balanced",
+      "n_samples": 80,
+      "seed": 20260721,
+      "robustness_pass_rate": 1.0,
+      "confidence_interval": [
+        1.0,
+        1.0
+      ],
+      "worst_case_shortfall_mb_d": 0.0,
+      "expected_shortfall_mb_d": 0.0,
+      "expected_landed_cost_usd_bbl": 131.596,
+      "cost_at_risk_usd_bbl": 172.356,
+      "max_delay_days": 9.75,
+      "failure_conditions": {
+        "supplier_failure": 0.0,
+        "secondary_port_closure": 0.0,
+        "demand_growth": 0.0,
+        "long_delay": 0.0,
+        "extended_duration": 0.0
+      },
+      "binding_constraints": [
+        "diversified supply; no single point of failure dominates"
+      ],
+      "recommended": false,
+      "rejected_reason": "similar robustness but higher cost-at-risk ($172.356 vs $169.629)",
+      "note": "robustness = frequency of futures maintaining minimum inventory (Monte Carlo)"
+    }
+  },
+  "limitations": [
+    "One historical case study does not estimate alert precision or false-alert rate.",
+    "Evidence is a curated immutable sourced lane, not a claim of GDELT bulk-derived tone.",
+    "Premium avoided is a planning counterfactual, not booked savings: EIA price delta \u00d7 modeled purchase volume \u00d7 stated commitment horizon.",
+    "Shortage-days avoided is zero when modeled national buffers already cover the scenario horizon.",
+    "Runtime measures engine signal-to-certified-plan compute only; human approval time is not measured."
+  ]
+}

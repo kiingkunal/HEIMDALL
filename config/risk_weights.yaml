@@ -1,0 +1,43 @@
+# Corridor Risk Index fusion weights.
+# THE INDEX IS 0-100, NOT A PROBABILITY. It is a weighted evidence fusion, not statistically
+# calibrated. The word "probability" is reserved for Monte Carlo frequency outputs only.
+# These weights are exposed in the Assumptions drawer as live sliders (PS demands assumptions
+# be "explicit and testable" — the drawer IS that feature).
+# Initial values: authored priors, NOT fitted. Locked + commit-hashed before the Phase 5 backtest.
+
+# index = w_news_volume*news_volume_z + w_tone*tone_negativity + w_price_vol*price_volatility
+#         + w_anomaly*anomaly_score + w_static*static_baseline + w_sanctions*sanctions_events
+# Components normalized to 0-1 before weighting; index = 100 * clamp(sum, 0, 1).
+weights:
+  news_volume: 0.25      # GDELT timelinevol z-score, corridor keyword cluster
+  tone:        0.15      # GDELT timelinetone negativity (more negative -> higher risk)
+  price_vol:   0.20      # Brent realized volatility (EIA authoritative history)
+  anomaly:     0.25      # AIS-derived: CLUSTER_TURN (headline), LOITERING, DARK_GAP
+  static:      0.10      # structural baseline exposure per corridor (india_crude_share * strategic_weight)
+  sanctions:   0.05      # new OFAC events touching corridor suppliers/vessels
+
+# Component normalization params.
+normalization:
+  news_volume_z_cap: 3.0        # z-scores clamped to +/-3 then mapped to 0-1
+  tone_floor: -10.0             # GDELT tone scale; -10 (very negative) -> 1.0
+  tone_ceil: 2.0               # +2 (neutral-positive) -> 0.0
+  price_vol_annualized_cap: 0.80  # 80% annualized realized vol -> 1.0
+  anomaly_saturation_count: 5     # >=5 concurrent anomalies in corridor -> 1.0
+
+# Confidence is SEPARATE from the index. Never fold confidence into the index value.
+# confidence = weighted blend, 0-1, shown as its own badge.
+confidence:
+  weights:
+    independent_signal_count: 0.35   # how many of {news, tone, price, anomaly, sanctions} are live
+    inter_signal_agreement:   0.30   # do live signals point the same direction
+    freshness:                0.20   # newest-data age vs staleness horizon
+    completeness:             0.15   # fraction of expected inputs actually present
+  freshness_full_hours: 6.0          # data <=6h old -> freshness 1.0
+  freshness_zero_hours: 72.0         # data >=72h old -> freshness 0.0
+
+# Cross-source convergence gate. This is an alerting rule, NOT a probability model.
+# NEWS combines GDELT volume+tone into one origin so one provider cannot double-corroborate itself.
+convergence:
+  active_origin_threshold: 0.35
+  confirmed_min_origins: 3
+  watch_min_origins: 2

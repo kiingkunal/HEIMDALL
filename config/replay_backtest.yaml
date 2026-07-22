@@ -1,0 +1,45 @@
+# Immutable 2025 replay/backtest rules. Lock this file together with the engine configs BEFORE
+# running `make backtest`. These are authored evaluation rules, not fitted thresholds.
+
+dataset: 2025-standoff
+corridor: hormuz
+
+# Curated evidence records carry sourced event types. This table turns the event type into the
+# replay tone component. It is an explicit qualitative coding rule, NOT GDELT tone and not an LLM.
+event_tone_by_type:
+  safeguards_resolution: -4.0
+  conflict_onset: -8.0
+  shipping_warning: -6.0
+  electronic_interference: -6.5
+  policy_escalation: -5.0
+  chokepoint_threat: -8.0
+  major_strike: -9.0
+  de_escalation: -2.0
+  normalization: 0.0
+
+alert_rule:
+  risk_index_threshold: 35.0
+  confidence_min: 0.45
+
+reactive_baseline:
+  baseline_end_date: "2025-06-11"
+  statistic: median
+  brent_move_usd_bbl: 10.0
+
+response_scenario:
+  restrict_severity: 0.50
+  duration_days: 14
+  monte_carlo_samples: 80
+
+counterfactual:
+  # A pre-alert plan is assumed to lock its modeled daily purchase volume for the scenario horizon.
+  # Premium avoided = max(reactive Brent - alert Brent, 0) * purchase mb/d * horizon days.
+  premium_commitment_days: 14
+
+config_lock_files:
+  - config/risk_weights.yaml
+  - config/corridors.yaml
+  - config/cascade_params.yaml
+  - config/mc_params.yaml
+  - config/solver_presets.yaml
+  - config/replay_backtest.yaml

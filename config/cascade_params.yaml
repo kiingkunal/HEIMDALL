@@ -1,0 +1,42 @@
+# Deterministic cascade twin constants. Every number here is defended under cross-examination.
+# Sources inline. Demo-assumption rows flagged. Twin scope: 8-10 suppliers, 6-8 refineries,
+# 3 SPR facilities, 5 corridors. Does NOT model global petroleum market or GDP.
+
+# --- India demand baseline ---
+india:
+  # India crude oil imports ~ 4.6-4.8 mb/d (PPAC, FY2024-25). Refinery crude throughput similar.
+  crude_import_mb_d: 4.7          # Source: PPAC "Import/Export of Crude Oil and Petroleum Products" FY2024-25
+  refinery_capacity_mb_d: 5.2     # Source: PPAC refining capacity ~254 MMTPA ≈ 5.1-5.2 mb/d (2024)
+  refinery_utilization_fraction: 0.90  # DEMO ASSUMPTION: scenario baseline run rate vs nameplate
+  import_dependence_pct: 88.0     # Source: PPAC — India imports ~88% of crude consumed
+  # Commercial crude stock cover, days. Distinct from SPR.
+  commercial_stock_days: 9.0      # DEMO ASSUMPTION, industry-typical 8-12d; refine with PPAC stock data
+
+# --- Cascade mechanics ---
+cascade:
+  # Fraction of a corridor's blocked volume that cannot be rerouted within the scenario window.
+  # Reroute (e.g. Cape of Good Hope) recovers volume but adds transit days + freight, modeled separately.
+  unreroutable_fraction_by_corridor:
+    hormuz: 0.85        # Hormuz has no bypass pipeline for most Gulf barrels -> mostly hard-blocked
+    bab_el_mandeb: 0.30 # Red Sea barrels can Cape-reroute -> most volume recoverable, delayed
+    suez: 0.25
+    malacca: 0.40
+  reroute_extra_days:
+    bab_el_mandeb: 14   # Suez/Red Sea -> Cape of Good Hope adds ~10-14 transit days (industry consensus)
+    suez: 14
+    malacca: 7
+    hormuz: 0           # no meaningful sea reroute for Gulf-origin crude
+  # Landed-cost pressure: how much a sustained deficit lifts landed crude cost.
+  # Elasticity is a PLANNING HEURISTIC, labeled as such in UI, not an econometric estimate.
+  landed_cost_usd_per_bbl_per_deficit_pct: 1.8   # DEMO ASSUMPTION: +1.8 $/bbl per 1% supply deficit
+  freight_multiplier_on_reroute: 1.6              # DEMO ASSUMPTION: reroute lifts freight ~60%
+  # Retail-price pressure is reported as a RANGE, never a point estimate.
+  retail_pass_through_low: 0.30    # 30% of landed-cost move flows to retail (subsidy/tax buffered)
+  retail_pass_through_high: 0.70   # DEMO ASSUMPTION band; India retail is administered/buffered
+
+# --- Time / severity model ---
+severity:
+  # severity 0-1 scales the corridor's blocked share linearly for the demo twin.
+  # duration_days drives inventory drawdown.
+  min_duration_days: 1
+  max_duration_days: 60

@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "dataset": "Indian crude import terminals + reference load ports",
+    "source": "World Port Index subset; operator terminal locations. Coordinates approximate.",
+    "as_of": "2025",
+    "retrieved": "2026-07-21",
+    "notes": "capacity_mb_d is modeled discharge throughput (DEMO ASSUMPTION). Used for port-capacity hard constraint and west/east coast disruption attribution. Load ports (is_load_port) anchor searoute origins."
+  },
+  "ports": [
+    { "id": "sikka",         "name": "Sikka (Jamnagar)",    "coast": "west", "lat": 22.43, "lon": 69.84, "capacity_mb_d": 1.40, "is_load_port": false },
+    { "id": "vadinar",       "name": "Vadinar Terminal",    "coast": "west", "lat": 22.28, "lon": 69.72, "capacity_mb_d": 0.55, "is_load_port": false },
+    { "id": "mumbai_port",   "name": "Mumbai Port",         "coast": "west", "lat": 18.95, "lon": 72.85, "capacity_mb_d": 0.55, "is_load_port": false },
+    { "id": "kochi_port",    "name": "Kochi Port",          "coast": "west", "lat": 9.97,  "lon": 76.26, "capacity_mb_d": 0.40, "is_load_port": false },
+    { "id": "new_mangalore", "name": "New Mangalore Port",  "coast": "west", "lat": 12.93, "lon": 74.80, "capacity_mb_d": 0.40, "is_load_port": false },
+    { "id": "paradip_port",  "name": "Paradip Port",        "coast": "east", "lat": 20.27, "lon": 86.67, "capacity_mb_d": 0.40, "is_load_port": false },
+    { "id": "chennai_port",  "name": "Chennai Port",        "coast": "east", "lat": 13.10, "lon": 80.30, "capacity_mb_d": 0.30, "is_load_port": false },
+    { "id": "visakh_port",   "name": "Visakhapatnam Port",  "coast": "east", "lat": 17.69, "lon": 83.28, "capacity_mb_d": 0.40, "is_load_port": false },
+
+    { "id": "ras_tanura",    "name": "Ras Tanura (Saudi)",  "coast": "load", "lat": 26.64, "lon": 50.16, "is_load_port": true, "supplier_id": "saudi_arabia" },
+    { "id": "basrah_oil",    "name": "Basrah Oil Terminal", "coast": "load", "lat": 29.68, "lon": 48.80, "is_load_port": true, "supplier_id": "iraq" },
+    { "id": "jebel_dhanna",  "name": "Jebel Dhanna (UAE)",  "coast": "load", "lat": 24.18, "lon": 52.61, "is_load_port": true, "supplier_id": "uae" },
+    { "id": "primorsk",      "name": "Primorsk (Russia)",   "coast": "load", "lat": 60.03, "lon": 28.68, "is_load_port": true, "supplier_id": "russia" },
+    { "id": "houston",       "name": "Houston (US)",        "coast": "load", "lat": 29.75, "lon": -95.30,"is_load_port": true, "supplier_id": "usa" },
+    { "id": "bonny",         "name": "Bonny (Nigeria)",     "coast": "load", "lat": 4.42,  "lon": 7.16,  "is_load_port": true, "supplier_id": "nigeria" },
+    { "id": "mina_al_ahmadi","name": "Mina al-Ahmadi (Kuwait)","coast": "load", "lat": 29.07, "lon": 48.15, "is_load_port": true, "supplier_id": "kuwait" },
+    { "id": "santos",        "name": "Santos (Brazil)",     "coast": "load", "lat": -24.0, "lon": -46.30,"is_load_port": true, "supplier_id": "brazil" },
+    { "id": "malongo",       "name": "Malongo (Angola)",    "coast": "load", "lat": -5.40, "lon": 12.00, "is_load_port": true, "supplier_id": "angola" }
+  ]
+}

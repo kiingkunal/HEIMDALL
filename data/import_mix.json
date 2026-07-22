@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "dataset": "India crude oil import mix by source country",
+    "source": "PPAC 'Import of Crude Oil' + trade press (Reuters/Kpler-reported shares); FY2024-25 approximate",
+    "as_of": "FY2024-25 (Apr 2024 - Mar 2025)",
+    "retrieved": "2026-07-21",
+    "notes": "Shares are approximate and rounded to sum ~100%. Russia share elevated post-2022. These are DEMO-GRADE aggregates for the twin, not settlement data. Refine against PPAC monthly tables before final deck.",
+    "total_import_mb_d": 4.7
+  },
+  "shares_pct": [
+    { "supplier_id": "russia",       "country": "Russia",              "share_pct": 36.0, "primary_corridor": "malacca" },
+    { "supplier_id": "iraq",         "country": "Iraq",                "share_pct": 19.0, "primary_corridor": "hormuz" },
+    { "supplier_id": "saudi_arabia", "country": "Saudi Arabia",        "share_pct": 14.0, "primary_corridor": "hormuz" },
+    { "supplier_id": "uae",          "country": "United Arab Emirates","share_pct": 8.0,  "primary_corridor": "hormuz" },
+    { "supplier_id": "usa",          "country": "United States",       "share_pct": 5.0,  "primary_corridor": "cape_good_hope" },
+    { "supplier_id": "kuwait",       "country": "Kuwait",              "share_pct": 4.0,  "primary_corridor": "hormuz" },
+    { "supplier_id": "nigeria",      "country": "Nigeria",             "share_pct": 4.0,  "primary_corridor": "cape_good_hope" },
+    { "supplier_id": "brazil",       "country": "Brazil",              "share_pct": 3.0,  "primary_corridor": "cape_good_hope" },
+    { "supplier_id": "angola",       "country": "Angola",              "share_pct": 2.0,  "primary_corridor": "cape_good_hope" },
+    { "supplier_id": "others",       "country": "Others",              "share_pct": 5.0,  "primary_corridor": "malacca" }
+  ],
+  "hormuz_dependent_share_pct": 45.0,
+  "hormuz_share_note": "Iraq+Saudi+UAE+Kuwait ≈ 45% transit Hormuz — matches spec's 40-45% claim"
+}

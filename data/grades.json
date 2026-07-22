@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "dataset": "Crude grade classes + refinery compatibility bands",
+    "source": "API gravity / sulphur classification per standard petroleum conventions (EIA definitions)",
+    "as_of": "2025 representative",
+    "retrieved": "2026-07-21",
+    "notes": "Grades bucketed into classes for the grade-compatibility hard constraint. class = f(api_gravity, sulphur). A refinery accepts a set of classes (see refineries.json accepts_classes). Real refineries have finer assay windows; these bands are a defensible simplification, labeled DEMO."
+  },
+  "classes": {
+    "light_sweet":  { "api_min": 35.0, "sulphur_max": 0.5,  "desc": "light (API>=35), low sulphur (<0.5%)" },
+    "medium_sweet": { "api_min": 28.0, "sulphur_max": 0.5,  "desc": "medium (API 28-35), low sulphur" },
+    "medium_sour":  { "api_min": 28.0, "sulphur_max": 3.0,  "desc": "medium, high sulphur (>=0.5%)" },
+    "light_sour":   { "api_min": 35.0, "sulphur_max": 3.0,  "desc": "light, high sulphur" }
+  },
+  "grade_class_map": {
+    "urals":        "medium_sour",
+    "basrah_medium":"medium_sour",
+    "arab_medium":  "medium_sour",
+    "murban":       "light_sour",
+    "wti_midland":  "light_sweet",
+    "kuwait_export":"medium_sour",
+    "bonny_light":  "light_sweet",
+    "tupi":         "medium_sweet",
+    "girassol":     "medium_sweet"
+  }
+}
