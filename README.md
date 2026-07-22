@@ -233,6 +233,6 @@ scripts/    Bounded data acquisition and verification utilities
 ## Authors
 
 - [**Kunal Chaudhary**](https://github.com/kiingkunal)
-- [**JATIN DHIMAN**](https://github.com/jatindhimangit) — Co-author and contributor
+- [**JATIN DHIMAN**](https://github.com/jatindhimangit)
 
 Built for the ET AI Hackathon 2026.
