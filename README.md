@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  ET AI Hackathon 2026 · AI-Driven Energy Supply Chain Resilience for Import-Dependent Economies
+   AI-Driven Energy Supply Chain Resilience for Import-Dependent Economies
 </p>
 
 <p align="center">
